@@ -33,27 +33,27 @@ public class HomeController {
                                            BindingResult bindingResult, Model model){
         model.addAttribute("user", person);
 
-//        Iterable<Person>checkusername=personRepository.findAllByUsername(person.getUsername());
-//        long count=checkusername.spliterator().getExactSizeIfKnown();
-//        System.out.println("++++++++++++++++++"+count+"++++++++++++++");
-//        if(count>0)
-//        {
-//            String existingusername="username '"+person.getUsername()+"' isn't available. Choose a different one";
-//            model.addAttribute("msg",existingusername);
-//            model.addAttribute("count",count);
-//            return "registration";
-//        }
-//
-//        Iterable<Person>checkemail=personRepository.findAllByEmail(person.getEmail());
-//        long emcount=checkemail.spliterator().getExactSizeIfKnown();
-//        System.out.println("++++++++++++++++++"+emcount+"++++++++++++++");
-//        if(emcount>0)
-//        {
-//            String existingemail="This email address '"+person.getEmail()+"' is already registered.";
-//            model.addAttribute("emmsg",existingemail);
-//            model.addAttribute("emcount",emcount);
-//            return "registration";
-//        }
+        Iterable<Person>checkusername=personRepository.findAllByUsername(person.getUsername());
+        long count=checkusername.spliterator().getExactSizeIfKnown();
+        System.out.println("++++++++++++++++++"+count+"++++++++++++++");
+        if(count>0)
+        {
+            String existingusername="username '"+person.getUsername()+"' isn't available. Choose a different one";
+            model.addAttribute("msg",existingusername);
+            model.addAttribute("count",count);
+            return "registration";
+        }
+
+        Iterable<Person>checkemail=personRepository.findAllByEmail(person.getEmail());
+        long emcount=checkemail.spliterator().getExactSizeIfKnown();
+        System.out.println("++++++++++++++++++"+emcount+"++++++++++++++");
+        if(emcount>0)
+        {
+            String existingemail="This email address '"+person.getEmail()+"' is already registered.";
+            model.addAttribute("emmsg",existingemail);
+            model.addAttribute("emcount",emcount);
+            return "registration";
+        }
 
         if(bindingResult.hasErrors()){
             return"registration";

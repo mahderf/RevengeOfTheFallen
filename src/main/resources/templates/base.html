@@ -20,8 +20,6 @@
         <![endif]-->
     </div>
 
-
-
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="nav">
@@ -41,9 +39,9 @@
                     <li><a href="/books/list">Show Books</a></li>
                     <li><a href="/login">Login</a></li>
                     <li>
-                        <div sec:authorize="hasAuthority('USER')">
+                        <!--<div sec:authorize="hasAuthority('USER')or('ADMIN')">-->
                         <a href="/logout">Logout</a>
-                        </div>
+                        <!--</div>-->
                     </li><li>
                         <a href="/register">Sign up</a>
                     </li>

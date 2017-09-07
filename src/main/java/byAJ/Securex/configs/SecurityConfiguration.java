@@ -23,6 +23,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Autowired
     private PersonRepository personRepository;
     @Override
+    public UserDetailsService userDetailsServiceBean() throws Exception{
+        return new SSUserDetailsService(personRepository);
+    }
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
@@ -32,8 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().failureUrl("/login?error")
-                .defaultSuccessUrl("/")
                 .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
