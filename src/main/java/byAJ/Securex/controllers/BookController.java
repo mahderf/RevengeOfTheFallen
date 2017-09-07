@@ -1,19 +1,24 @@
 package byAJ.Securex.controllers;
 
 import byAJ.Securex.models.Book;
+
 import byAJ.Securex.repositories.BookRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
+
 @RequestMapping("/books")
 public class BookController {
 
     @Autowired
-    private BookRepository bookRepository;
+    BookRepository bookRepository;
 
     @RequestMapping("/list")
     public String listBooks(Model model){
